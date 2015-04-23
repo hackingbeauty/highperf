@@ -20,7 +20,7 @@ app.model.result = (function () {
     get_all,
     show_all;
 
-  get_all = function ( url, callback ) {
+  get_all = function ( url, getMobileResults ) {
     var 
       s = document.createElement('script'),
       query;
@@ -31,6 +31,9 @@ app.model.result = (function () {
       'callback=app.model.result.show_all',
       'key=' + app.config.get_api_key(),
     ].join('&');
+    if(getMobileResults){
+      query = query + 'strategy=mobile';
+    }
     s.src = GOOGLE_PAGE_SPEED_URL + query;
     document.head.insertBefore(s, null);
   };

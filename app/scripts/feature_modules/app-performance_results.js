@@ -48,7 +48,7 @@ app.performance_results = (function () {
     jqueryMap.$container.show();
     jqueryMap.$container.append(
       configMap.results_list_html({
-        speedScore: results.ruleGroups.SPEED.score,
+        speedScore              : results.ruleGroups.SPEED.score,
         numberResources         : results.pageStats.numberResources,
         cssResponseBytes        : parseInt( results.pageStats.cssResponseBytes / 1000 ),
         htmlResponseBytes       : parseInt( results.pageStats.htmlResponseBytes / 1000 ),

@@ -61,7 +61,8 @@ app.search_box = (function () {
       $container        : $container, 
       $searchBoxInput   : $container.find('#app-search-box-input'),
       $searchBtn        : $container.find('#app-search-btn'),
-      $progressBar      : $container.find('#app-progress-bar')
+      $progressBar      : $container.find('#app-progress-bar'),
+      $mobileCheckbox   : $container.find('#app-mobile-optmization-checkbox')
     };
   };
   // End DOM method /setJqueryMap/
@@ -70,12 +71,13 @@ app.search_box = (function () {
   //------------------- BEGIN EVENT HANDLERS -------------------
   onSearchBtnClick = function(){
     var page;
+    var getMobileResults;
     jqueryMap.$searchBtn.on('click', function(){
       page = jqueryMap.$searchBoxInput.val();
       if(true){
         startProgressBar();
-        
-        app.model.result.get_all( page );
+        getMobileResults = jqueryMap.$mobileCheckbox.attr('checked') ? true : false;
+        app.model.result.get_all( page, getMobileResults );
       } else {
         alert('bad url dude');
       }
