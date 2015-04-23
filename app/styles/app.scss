@@ -1,0 +1,191 @@
+/*
+ * app.css
+ * General/universal styles
+*/
+
+html,
+body {
+  height: 100%;
+
+}
+
+html { overflow-y:scroll; }
+
+body {
+  position: relative;
+  background: white;
+}
+
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 10px 0;
+}
+
+li {
+  list-style-type:none;
+}
+
+dl, menu, ul, ol {
+  margin:0;
+  padding:0;
+}
+
+img,
+embed,
+object,
+video {
+  max-width: 100%;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 10px;
+  min-height: 40px;
+}
+
+paper-button {
+  background : #0078e7;
+  color: white;
+  width: 100%;
+  margin: 0;
+}
+
+.heading{
+  background: #2a3740;
+  padding: 10px;
+  border-bottom: 1px solid #0a0d0f;
+  h2 {
+    color: white;
+    text-align:center;
+    a {
+      color: inherit;
+    }
+  }
+}
+
+.beta{
+  color: orange;
+  font-weight: bold;
+}
+
+.video-time,
+.recorded-video-time {
+  color: blue;
+  cursor:pointer;
+  text-decoration: underline;
+}
+
+.rounded {
+	border-radius: 5px;
+}
+
+.module {
+	padding: 20px;
+  clear: both;
+}
+
+.selected {
+  background: #01c461 !important;
+}
+
+.video-container {
+	border: 1px solid #e3e3e3;
+}
+
+.video {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  margin: 20px 0;
+  background: red;
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: .1em;
+}
+
+.video:before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: inherit;
+  border-radius: 5% / 50%;
+}
+
+.visible {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.label {
+  font-size: 16px;
+}
+
+.caret {
+  color: white;
+}
+
+.error {
+  border: 2px solid red !important;
+  background: pink;
+}
+
+.ui-autocomplete-loading {
+  background: white url('../images/ui-anim_basic_16x16.gif') right center no-repeat;
+}
+
+core-header-panel {
+
+}
+
+core-header-panel#main-section {
+}
+
+core-header-panel {
+
+  &::shadow {
+    #mainContainer {
+      /* Let's get this party started */
+      &::-webkit-scrollbar {
+          width: 12px;
+      }
+       
+      /* Track */
+      &::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+          -webkit-border-radius: 0px;
+          border-radius: 0px;
+      }
+       
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+          -webkit-border-radius: 10px;
+          border-radius: 0px;
+          background: #2a343b; 
+          -webkit-box-shadow: inset 0 0 6px #2a3740; 
+      }
+      &::-webkit-scrollbar-thumb:window-inactive {
+        background: #2a343b; 
+      }
+    }
+  }
+}
+
+paper-checkbox::shadow {
+  #checkbox.checked {
+    background-color: #01c461;
+    border-color: #01c461;
+  }
+}
+
