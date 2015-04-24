@@ -88,13 +88,14 @@ app.search_box = (function () {
         }
       } else {
         jqueryMap.$searchBoxInput.addClass('error');
-        jqueryMap.$searchBoxInput.val('Please enter a URL');
+        jqueryMap.$searchBoxInput.attr('placeholder','Please enter a URL');
       }
     });
   };
 
   clearInput = function(){
     jqueryMap.$searchBoxInput.val('');
+    jqueryMap.$searchBoxInput.attr('placeholder','yoursite.com');
   };
   //-------------------- END EVENT HANDLERS --------------------
 

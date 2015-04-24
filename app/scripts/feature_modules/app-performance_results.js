@@ -45,6 +45,7 @@ app.performance_results = (function () {
 
   //------------------- BEGIN EVENT HANDLERS -------------------
   showResults = function( evt, results ){
+    jqueryMap.$container.empty();
     jqueryMap.$container.show();
     jqueryMap.$container.append(
       configMap.results_list_html({

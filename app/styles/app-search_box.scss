@@ -1,4 +1,4 @@
-#app-search-box {
+ #app-search-box {
 	#app-search-box-input {
 		font-size: 18px;
 		width:80%;
@@ -7,6 +7,7 @@
 		width: 10%;
 		position: relative;
 		top: -2px;
+		margin-bottom: 10px;
 	}
 	.msg {
 		display: inline-block;
@@ -15,5 +16,16 @@
 	#app-mobile-optmization-checkbox {
 		position: relative;
 		top: 4px;
+	}
+}
+
+
+@media only screen and (max-width: 700px){
+
+	#app-search-box {
+		#app-search-box-input,
+		#app-search-btn {
+			width: 100% ;
+		}
 	}
 }
