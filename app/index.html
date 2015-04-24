@@ -140,24 +140,17 @@
     <!-- End Alert Modal template-->
 
     <!-- Search Box template-->
-    <script id="app-search-box-template" type=“x-text/handlebars”>
-        <div id="app-search-box">
-            <div class="col-lg-8">
+    <script id="app-search-box-template" type=“x-text/handlebars”>    
+        <div class="col-lg-8">
+            <div id="app-search-box">
                 <div class="module">
                     <h2>Analyze Performance of:</h2>
-                    <div class="row">
-                        <form action="">
-                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                                <input id="app-search-box-input" placeholder="" required/>
-                                <span class="msg">Get Mobile Optimization Suggestions</span>
-                                <paper-checkbox id="app-mobile-optmization-checkbox"></paper-checkbox>
-                            </div>
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                                <paper-button id="app-search-btn">Go!</paper-button>
-                            </div>
-                        </form>
-                    </div>
-
+                    <form action="">
+                            <input id="app-search-box-input" placeholder="yoursite.com" required/>
+                            <paper-button id="app-search-btn">Go!</paper-button>
+                            <span class="msg">Get Mobile Optimization Suggestions</span>
+                            <paper-checkbox id="app-mobile-optmization-checkbox"></paper-checkbox>
+                    </form>
                 </div>
                 <div id="app-progress-bar" class="progress hide">
                     <span>Analyzing URL:</span>
@@ -173,8 +166,8 @@
 
     <!-- Recent Insights template-->
     <script id="app-recent-insights-template" type=“x-text/handlebars”>
-        <div id="app-recent-insights">
-            <div class="col-lg-4">
+        <div class="col-lg-4">
+            <div id="app-recent-insights">
                 <div class="module">
                     <h2>Other Sites</h2>
                 </div>

@@ -88,6 +88,7 @@ app.search_box = (function () {
         }
       } else {
         jqueryMap.$searchBoxInput.addClass('error');
+        jqueryMap.$searchBoxInput.val('Please enter a URL');
       }
     });
   };

@@ -1,6 +1,12 @@
 #app-search-box {
 	#app-search-box-input {
 		font-size: 18px;
+		width:80%;
+	}
+	#app-search-btn {
+		width: 10%;
+		position: relative;
+		top: -2px;
 	}
 	.msg {
 		display: inline-block;

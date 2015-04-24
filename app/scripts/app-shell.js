@@ -105,7 +105,7 @@ app.shell = (function () {
     app.login_modal.initModule            ( jqueryMap.$shellBody );
     app.alert_modal.initModule            ( jqueryMap.$shellBody );
     app.search_box.initModule             ( jqueryMap.$shellBody );
-    // app.recent_insights.initModule        ( jqueryMap.$shellBody );
+    app.recent_insights.initModule        ( jqueryMap.$shellBody );
     app.performance_results.initModule    ( jqueryMap.$shellBody );
 
     closeModalsOnClick();
