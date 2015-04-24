@@ -70,14 +70,14 @@ app.search_box = (function () {
 
   //------------------- BEGIN EVENT HANDLERS -------------------
   onSearchBtnClick = function(){
-    var page;
+    var url;
     var getMobileResults;
     jqueryMap.$searchBtn.on('click', function(){
-      page = jqueryMap.$searchBoxInput.val();
-      if(true){
+      url = app.util.prependWithProtocol( jqueryMap.$searchBoxInput.val() );
+      if(app.util.isValidURL( url )){
         startProgressBar();
         getMobileResults = jqueryMap.$mobileCheckbox.attr('checked') ? true : false;
-        app.model.result.get_all( page, getMobileResults );
+        app.model.result.get_all( url, getMobileResults );
       } else {
         alert('bad url dude');
       }

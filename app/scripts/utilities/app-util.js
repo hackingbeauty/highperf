@@ -2,11 +2,6 @@
  * app.util.js
  * General JavaScript utilities
  *
- * Michael S. Mikowski - mmikowski at gmail dot com
- * These are routines I have created, compiled, and updated
- * since 1998, with inspiration from around the web.
- *
- * MIT License
  *
 */
 
@@ -19,9 +14,17 @@
 /*global app, jsPDF */
 
 app.util = (function () {
-  var makeError, setConfigMap, parseVideoID, isValidDomain, generatePDF;
+  var makeError, setConfigMap, prependWithProtocol, isValidURL;
 
-  // Begin Public constructor /isValidDomain/
+  prependWithProtocol = function( url ){
+    if( ( url.indexOf('http://') !== -1 ) || ( url.indexOf('https://') !== -1 ) ){
+      return url;
+    } else {
+      return 'http://' + url;
+    }
+  }
+
+  // Begin Public constructor /isValidURL/
   // Purpose: Determine if given URL is valid
   // Valid URLs include the domains youtube.com and coursera.com
   // Arguments:
@@ -29,34 +32,12 @@ app.util = (function () {
   // Returns  : boolean
   // Throws   : none
   //
-  isValidDomain = function( url ){
-    var validDomains = ['youtube.com','youtu.be'], i;
-    for(i = 0; i < validDomains.length; i++ ){
-      if( url.indexOf( validDomains[i]) > -1){ //If the URL contains a valid domain
-        return true;                            //then we're good
-      }
+  isValidURL = function( url ){
+    if( ( url.indexOf('http://') !== -1 ) || ( url.indexOf('https://') !== -1 ) ){
+      return true;
+    } else {
+      return false;
     }
-    return false;
-  };
-
-  // Begin Public constructor /parseVideoID/
-  // Purpose: parse the video id from a given route
-  // Arguments:
-  //   * route - the actual hash route
-  // Returns  : video id
-  // Throws   : none
-  //
-  parseVideoID = function( url ){
-    if( url.match(/video_id=(.*)/) ) {    // If url with video_id DOES NOT have &,
-      return url.match(/video_id=(.*)/)[1]; // use this regex
-    }
-    if( url.match(/v=(.*)/) ){
-      return url.match(/v=(.*)/)[1];
-    }
-    if( url.match(/youtu.be/) ){
-      return url.split('/')[3]
-    }
-    return false;
   };
 
   // Begin Public constructor /makeError/
@@ -78,30 +59,6 @@ app.util = (function () {
     return error;
   };
   // End Public constructor /makeError/
-
-  generatePDF = function( videos ){
-    var 
-      doc,
-      video, 
-      videoNotes, 
-      note, 
-      notesArr = [];
-
-    for(video in videos){
-      videoNotes = videos[video];
-
-      for(note in videoNotes){
-        notesArr.push( videoNotes[note].note );
-        notesArr.push('-------------------------------');
-      }
-
-    }
-
-    doc = new jsPDF({ orientation: 'portrait', unit: 'mm', lineHeight: 2 });
-    doc.setFontSize(14);
-    doc.text(15, 20, doc.splitTextToSize(notesArr, 380));
-    doc.output('dataurlnewwindow');
-  };
 
   // Begin Public method /setConfigMap/
   // Purpose: Common code to set configs in feature modules
@@ -136,10 +93,9 @@ app.util = (function () {
   // End Public method /setConfigMap/
 
   return {
-    makeError     : makeError,
-    setConfigMap  : setConfigMap,
-    parseVideoID  : parseVideoID,
-    isValidDomain : isValidDomain,
-    generatePDF   : generatePDF
+    makeError           : makeError,
+    setConfigMap        : setConfigMap,
+    isValidURL          : isValidURL,
+    prependWithProtocol : prependWithProtocol
   };
 }());
