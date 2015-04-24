@@ -41,13 +41,13 @@ app.search_box = (function () {
     var widthCount = 0;
     var widthPercent;
     jqueryMap.$progressBar.show();
-    setInterval(function(){
-      if(widthCount < 100){
+    var interval = setInterval(function(){
+      if(widthCount < 90){
         widthCount++;
         widthPercent = widthCount + '%';
         jqueryMap.$progressBar.find('.progress-bar').css('width', widthPercent);
       } else {
-        clearInterval();
+        clearInterval(interval);
       }
     },30);
   };
