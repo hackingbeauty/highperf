@@ -30,9 +30,10 @@ app.model.result = (function () {
       'url=' + url,
       'callback=app.model.result.show_all',
       'key=' + app.config.get_api_key(),
+      'screenshot=true'
     ].join('&');
     if(getMobileResults){
-      query = query + 'strategy=mobile';
+      query = query + '&strategy=mobile';
     }
     s.src = GOOGLE_PAGE_SPEED_URL + query;
     document.head.insertBefore(s, null);

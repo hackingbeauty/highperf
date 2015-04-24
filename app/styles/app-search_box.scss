@@ -1,4 +1,5 @@
  #app-search-box {
+
  	#app-progress-bar {
  		text-align: center;
  	}
@@ -10,8 +11,13 @@
 		width: 10%;
 		position: relative;
 		top: -2px;
+	}
+
+	#app-search-box-input,
+	#app-search-btn {
 		margin-bottom: 10px;
 	}
+
 	.msg {
 		display: inline-block;
 		margin-bottom: 10px;

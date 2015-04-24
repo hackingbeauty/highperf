@@ -45,11 +45,19 @@ app.performance_results = (function () {
 
   //------------------- BEGIN EVENT HANDLERS -------------------
   showResults = function( evt, results ){
+    var theUsabilityScore;
+
+    if(results.ruleGroups.USABILITY){
+      theUsabilityScore = results.ruleGroups.USABILITY.score;
+    }
+
     jqueryMap.$container.empty();
-    jqueryMap.$container.show();
+
     jqueryMap.$container.append(
       configMap.results_list_html({
+        pageTitle               : results.title,
         speedScore              : results.ruleGroups.SPEED.score,
+        usabilityScore          : theUsabilityScore,
         numberResources         : results.pageStats.numberResources,
         cssResponseBytes        : parseInt( results.pageStats.cssResponseBytes / 1000 ),
         htmlResponseBytes       : parseInt( results.pageStats.htmlResponseBytes / 1000 ),
@@ -65,6 +73,9 @@ app.performance_results = (function () {
         pageStats               : results.pageStats
       })
     )
+
+    jqueryMap.$container.show();
+
     console.log('THE RESULTS ARE: ', results);
   };
   //-------------------- END EVENT HANDLERS --------------------
