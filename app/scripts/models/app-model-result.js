@@ -39,7 +39,12 @@ app.model.result = (function () {
   };
 
   show_all = function( results ){
-    $.gevent.publish( 'app-show-results', [ results ] );
+    if('error' in results){
+      $.gevent.publish( 'app-stop-progress-bar', [] );
+      $.gevent.publish( 'app-alert-modal-show', [ "Could not retreive performance results. <br /> <br />Are you sure you typed in the right URL?" ] );
+    } else {
+      $.gevent.publish( 'app-show-results', [ results ] );
+    }
   }
 
   return {

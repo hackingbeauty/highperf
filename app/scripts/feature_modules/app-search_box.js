@@ -25,6 +25,7 @@ app.search_box = (function () {
 
     startProgressBar,
     stopProgressBar,
+    clearInput,
     onSearchBtnClick,
 
     setJqueryMap, configModule, initModule;
@@ -70,21 +71,31 @@ app.search_box = (function () {
 
   //------------------- BEGIN EVENT HANDLERS -------------------
   onSearchBtnClick = function(){
-    var url;
-    var getMobileResults;
+    var 
+      url,
+      input,
+      getMobileResults;
+
     jqueryMap.$searchBtn.on('click', function(){
-      url = app.util.prependWithProtocol( jqueryMap.$searchBoxInput.val() );
-      if(app.util.isValidURL( url )){
-        startProgressBar();
-        getMobileResults = jqueryMap.$mobileCheckbox.attr('checked') ? true : false;
-        app.model.result.get_all( url, getMobileResults );
+      input = jqueryMap.$searchBoxInput.val();
+      if(input) {
+        jqueryMap.$searchBoxInput.removeClass('error');
+        url = app.util.prependWithProtocol( input );
+        if(app.util.isValidURL( url )){
+          startProgressBar();
+          getMobileResults = jqueryMap.$mobileCheckbox.attr('checked') ? true : false;
+          app.model.result.get_all( url, getMobileResults );
+        }
       } else {
-        alert('bad url dude');
+        jqueryMap.$searchBoxInput.addClass('error');
       }
     });
   };
-  //-------------------- END EVENT HANDLERS --------------------
 
+  clearInput = function(){
+    jqueryMap.$searchBoxInput.val('');
+  };
+  //-------------------- END EVENT HANDLERS --------------------
 
 
   //------------------- BEGIN PUBLIC METHODS -------------------
@@ -120,6 +131,8 @@ app.search_box = (function () {
     setJqueryMap();
     onSearchBtnClick();
     $.gevent.subscribe( jqueryMap.$container, 'app-show-results', stopProgressBar );
+    $.gevent.subscribe( jqueryMap.$container, 'app-stop-progress-bar', stopProgressBar );
+    $.gevent.subscribe( jqueryMap.$container, 'app-alert-modal-show', clearInput );
     return true;
   };
   // End public method /initModule/

@@ -11,7 +11,6 @@
 */
 
 /*global $, app, Handlebars */
-
 app.alert_modal = (function () {
   'use strict';
   
@@ -46,15 +45,19 @@ app.alert_modal = (function () {
   //------------------- BEGIN EVENT HANDLERS -------------------
 
   showAlertModal = function( evt, content, callback ){
-    jqueryMap.$container.find('.modal-dialog').html( content );
+    jqueryMap.$container.find('.modal-body').html( content );
     jqueryMap.$container.modal();
     jqueryMap.$container.on('click','.confirm-btn', function(){
-      callback(true);
+      if(callback){
+        callback(true);
+      }
       jqueryMap.$container.modal('hide');
       jqueryMap.$container.off('click','.confirm-btn');
     });
     jqueryMap.$container.on('click','.cancel-btn', function(){
-      callback(false);
+      if(callback){
+        callback(false);
+      }
       jqueryMap.$container.modal('hide');
       jqueryMap.$container.off('click','.confirm-btn');
       jqueryMap.$container.off('click','.cancel-btn');
